@@ -1,6 +1,6 @@
 import readchar
 
-print("Welcome to Lethal Company Quota Calcuator v1.1!")
+print("Welcome to Lethal Company Quota Calcuator v1.2!")
 def find_combination(items, target):
     n = len(items)
     dp = [[0] * (target + 1) for _ in range(n + 1)]
