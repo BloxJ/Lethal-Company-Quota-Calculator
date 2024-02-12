@@ -1,3 +1,6 @@
+import readchar
+
+print("Welcome to Lethal Company Quota Calcuator v1.1!")
 def find_combination(items, target):
     n = len(items)
     dp = [[0] * (target + 1) for _ in range(n + 1)]
@@ -21,18 +24,35 @@ def find_combination(items, target):
 
 
 def main():
-    items = input("Enter the costs of items separated by space: ").split()
-    items = [int(item) for item in items]
-    target = int(input("Enter the target cost: "))
+    items = []
+    while True:
+        remaining_items = input("Enter the prices of your scrap separated by spaces: ").split()
+        remaining_items = [int(item) for item in remaining_items]
+        
+        if not items:
+            items = remaining_items
+        else:
+            for item in remaining_items:
+                if item in items:
+                    items.remove(item)
 
-    combination = find_combination(items, target)
-    total_cost = sum(combination)
+        target = int(input("Enter the quota amount: "))
 
-    if total_cost < target:
-        print("Error: Total cost is less than the target. Cannot proceed.")
-    else:
-        print("Items to sell:", combination)
-        print("Total cost:", total_cost)
+        combination = find_combination(items, target)
+        total_cost = sum(combination)
+
+        if total_cost < target:
+            print("Error: Prices of scrap are less than the target quota.")
+            print("Press any key to exit...")
+            k = readchar.readchar()
+            break
+        else:
+            print("Prices of items to sell:", combination)
+            print("Total amount to sell:", total_cost)
+
+        choice = input("Do you want to add more costs of items? (yes/no): ").lower()
+        if choice != 'yes':
+            break
 
 
 if __name__ == "__main__":
