@@ -50,7 +50,7 @@ def main():
             print("Prices of items to sell:", combination)
             print("Total amount to sell:", total_cost)
 
-        choice = input("Do you want to add more costs of items? (yes/no): ").lower()
+        choice = input("Do you want to add more scrap? (yes/no): ").lower()
         if choice != 'yes':
             break
 
