@@ -1,6 +1,7 @@
 import readchar
 
-print("Welcome to Lethal Company Quota Calcuator v1.2!")
+print("Welcome to Lethal Company Quota Calcuator v1.2.1!")
+
 def find_combination(items, target):
     n = len(items)
     dp = [[0] * (target + 1) for _ in range(n + 1)]
@@ -34,7 +35,7 @@ def main():
         else:
             for item in remaining_items:
                 if item in items:
-                    items.remove(item)
+                    items.remove(item)  # Remove the item from the list
 
         target = int(input("Enter the quota amount: "))
 
@@ -49,11 +50,13 @@ def main():
         else:
             print("Prices of items to sell:", combination)
             print("Total amount to sell:", total_cost)
+            # Remove chosen items from the list
+            for item in combination:
+                items.remove(item)
 
         choice = input("Do you want to add more scrap? (yes/no): ").lower()
         if choice != 'yes':
             break
-
 
 if __name__ == "__main__":
     main()
